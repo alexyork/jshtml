@@ -17,10 +17,11 @@ app.get('/', function(req, res) {
     res.send('<p>hello world</p>');
 });
 
-app.get('/post', function(req, res) {
+app.get('/post/:postName', function(req, res) {
+    var postName = req.params.postName;
     res.render('post', {
         title: 'some blog post',
-        message: 'This is a blog post'
+        blogPost: '../posts/' + postName + '.jshtml'
     });
 });
 
