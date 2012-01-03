@@ -1,5 +1,6 @@
 var express = require('express');
 var jshtml = require('jshtml');
+var blogPosts = require('./blogPosts');
 
 var port = parseInt(process.argv.pop());
 var app = express.createServer();
@@ -14,16 +15,20 @@ app.set('view options', {
 });
 
 app.get('/', function(req, res) {
-    res.send('<p>hello world</p>');
-});
-
-app.get('/post/:postName', function(req, res) {
-    var postName = req.params.postName;
-    res.render('post', {
-        title: 'some blog post',
-        blogPost: '../posts/' + postName + '.jshtml'
+    var posts = blogPosts.getMostRecent(2);
+    res.render('blogPosts', {
+        posts: posts
     });
 });
 
-app.listen(port);
-console.log('simple-blog running at port ' + port);
+app.get('/post/:postName', function(req, res) {
+    var post = blogPosts.getByUrlFragment( req.params.postName );
+    res.render('blogPosts', {
+        posts: [ post ]
+    });
+});
+
+blogPosts.init(function() {
+    app.listen(port);
+    console.log('simple-blog running at port ' + port);
+});

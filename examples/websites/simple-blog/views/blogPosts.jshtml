@@ -1,0 +1,10 @@
+@posts.forEach(function(post, index) {
+
+    <article>
+        <h1>@post.title</h1>
+        <div class="content">
+            @writePartial('../posts/' + post.urlFragment + '.jshtml');
+        </div>
+    </article>
+
+});
