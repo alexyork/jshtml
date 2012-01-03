@@ -1,7 +1,7 @@
 @posts.forEach(function(post, index) {
 
     <article>
-        <h1>@post.title</h1>
+        <h1><a href="/post/@post.urlFragment">@post.title</a></h1>
         <div class="content">
             @writePartial('../posts/' + post.urlFragment + '.jshtml');
         </div>
