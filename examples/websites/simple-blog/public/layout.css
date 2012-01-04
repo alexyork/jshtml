@@ -1,0 +1,10 @@
+body {
+    color: Red;
+    text-align: center;
+}
+#wrapper {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+    border: solid 1px #cccccc;
+}

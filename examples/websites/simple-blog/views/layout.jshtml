@@ -2,8 +2,19 @@
 <html>
     <head>
         <title>@locals.title</title>
+        <link rel="stylesheet" href="/layout.css" type="text/css" />
     </head>
     <body>
-        @writeBody();
+        <div id="wrapper">
+            <header>
+                <span>Sample jshtml + node.js blog</span>
+            </header>
+            <section id="mainContent">
+                @writeBody();
+            </section>
+            <footer>
+                <p>This is the footer</p>
+            </footer>
+        </div>
     </body>
 </html>
