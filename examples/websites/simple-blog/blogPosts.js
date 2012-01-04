@@ -30,8 +30,18 @@ BlogPosts = {};
         }
     };
 
-    ns.getFullPath = function(post) {
-        return '../posts/' + post.urlFragment + '.jshtml';
+    ns.getByTag = function(tag) {
+        var matchingPosts = [];
+        for (var i = 0; i < ns.posts.length; i++) {
+            var post = ns.posts[i];
+            for (var j = 0; j < post.tags.length; j++) {
+                var postTag = post.tags[j];
+                if (postTag.toLowerCase() === tag.toLowerCase()) {
+                    matchingPosts.push(post);
+                }
+            }
+        }
+        return matchingPosts;
     };
 
 })(BlogPosts);
@@ -39,3 +49,4 @@ BlogPosts = {};
 exports.init = BlogPosts.init;
 exports.getMostRecent = BlogPosts.getMostRecent;
 exports.getByUrlFragment = BlogPosts.getByUrlFragment;
+exports.getByTag = BlogPosts.getByTag;

@@ -5,6 +5,11 @@
         <div class="content">
             @writePartial('../posts/' + post.urlFragment + '.jshtml');
         </div>
+        <div class="tags">
+            @post.tags.forEach(function(tag) {
+                <a href="/tag/@tag">@tag</a>
+            });
+        </tags>
     </article>
 
 });

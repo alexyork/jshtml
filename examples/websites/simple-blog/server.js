@@ -28,6 +28,13 @@ app.get('/post/:postName', function(req, res) {
     });
 });
 
+app.get('/tag/:tag', function(req, res) {
+    var posts = blogPosts.getByTag( req.params.tag );
+    res.render('blogPosts', {
+        posts: posts
+    });
+});
+
 blogPosts.init(function() {
     app.listen(port);
     console.log('simple-blog running at port ' + port);
