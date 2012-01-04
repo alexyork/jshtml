@@ -15,7 +15,7 @@ app.set('view options', {
 });
 
 app.get('/', function(req, res) {
-    var posts = blogPosts.getMostRecent(2);
+    var posts = blogPosts.getMostRecent(5);
     res.render('blogPosts', {
         posts: posts
     });
